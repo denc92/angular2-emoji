@@ -4,11 +4,12 @@ import {FormsModule} from '@angular/forms';
 
 import {EmojiUtil} from './util/util';
 import {EmojiInputComponent} from './input/input';
+import {EmojiButtonComponent} from './button/button';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  exports: [EmojiInputComponent],
+  exports: [EmojiInputComponent, EmojiButtonComponent],
   providers: [EmojiUtil],
-  declarations: [EmojiInputComponent]
+  declarations: [EmojiInputComponent, EmojiButtonComponent]
 })
 export class EmojiModule { }

@@ -17,6 +17,12 @@
       <p>Specify function to be called when pressing enter key</p>
       <p>Enter pressed: {{pressedCount}} time(s)
       <emoji-input [onEnter]="enterTest.bind(this)"></emoji-input>
+      <br>
+      <p>Button picker without input field</p>
+      <div>
+        <input type="text" [(ngModel)]="testButtonModel">
+        <emoji-button [(model)]="testButtonModel"></emoji-button>
+      </div>
       <br><br>
       <h2>EmojiService</h2>
       <br>

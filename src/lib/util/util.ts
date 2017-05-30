@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+declare var require: any;
 let emojis = require('../db/emoji.json');
 
 const PARSE_REGEX = /:([a-zA-Z0-9_\-\+]+):/g;
