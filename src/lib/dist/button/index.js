@@ -1,4 +1,4 @@
-System.register(["./module"], function (exports_1, context_1) {
+System.register(["./button"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -10,8 +10,8 @@ System.register(["./module"], function (exports_1, context_1) {
     }
     return {
         setters: [
-            function (module_1_1) {
-                exportStar_1(module_1_1);
+            function (button_1_1) {
+                exportStar_1(button_1_1);
             }
         ],
         execute: function () {

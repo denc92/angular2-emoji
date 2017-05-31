@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/AnteWall/angular2-emoji#readme",
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/common": "^2.0.0",
-    "@angular/forms": "^2.0.0"
+    "@angular/core": "^2.4.0",
+    "@angular/common": "^2.4.0",
+    "@angular/forms": "^2.4.0"
   },
   "scripts": {
     "tsc": "tsc"

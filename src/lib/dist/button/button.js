@@ -10,7 +10,7 @@ System.register(["@angular/core", "../util/util"], function (exports_1, context_
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, util_1, EmojiInputComponent;
+    var core_1, util_1, EmojiButtonComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -21,30 +21,32 @@ System.register(["@angular/core", "../util/util"], function (exports_1, context_
             }
         ],
         execute: function () {
-            EmojiInputComponent = (function () {
-                function EmojiInputComponent() {
+            EmojiButtonComponent = (function () {
+                function EmojiButtonComponent() {
                     this.popupAnchor = 'top';
-                    this.onEnter = function () { };
                     this.modelChange = new core_1.EventEmitter();
                     this.emojiUtil = new util_1.EmojiUtil();
                     this.popupOpen = false;
                 }
-                EmojiInputComponent.prototype.ngOnInit = function () {
+                EmojiButtonComponent.prototype.ngOnInit = function () {
                     this.input = '';
                     this.filterEmojis = '';
                     this.allEmojis = this.emojiUtil.getAll();
                 };
-                EmojiInputComponent.prototype.ngOnChanges = function () {
+                EmojiButtonComponent.prototype.ngOnChanges = function () {
                     if (this.model !== this.input) {
                         this.input = this.model;
                     }
                 };
-                EmojiInputComponent.prototype.togglePopup = function () {
+                EmojiButtonComponent.prototype.togglePopup = function () {
                     this.popupOpen = !this.popupOpen;
                 };
-                EmojiInputComponent.prototype.getFilteredEmojis = function () {
+                EmojiButtonComponent.prototype.getFilteredEmojis = function () {
                     var _this = this;
                     return this.allEmojis.filter(function (e) {
+                        if (e.emoji === undefined) {
+                            return false;
+                        }
                         if (_this.filterEmojis === '') {
                             return true;
                         }
@@ -59,43 +61,39 @@ System.register(["@angular/core", "../util/util"], function (exports_1, context_
                         return false;
                     });
                 };
-                EmojiInputComponent.prototype.onEmojiClick = function (e) {
+                EmojiButtonComponent.prototype.onEmojiClick = function (e) {
                     this.input = this.input + e;
                     this.modelChange.emit(this.input);
                     this.popupOpen = false;
                 };
-                EmojiInputComponent.prototype.onChange = function (newValue) {
+                EmojiButtonComponent.prototype.onChange = function (newValue) {
                     this.input = this.emojiUtil.emojify(newValue);
                     this.model = this.input;
                     this.modelChange.emit(this.input);
                 };
-                return EmojiInputComponent;
+                return EmojiButtonComponent;
             }());
             __decorate([
                 core_1.Input(),
                 __metadata("design:type", Object)
-            ], EmojiInputComponent.prototype, "popupAnchor", void 0);
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", Function)
-            ], EmojiInputComponent.prototype, "onEnter", void 0);
+            ], EmojiButtonComponent.prototype, "popupAnchor", void 0);
             __decorate([
                 core_1.Input(),
                 __metadata("design:type", Object)
-            ], EmojiInputComponent.prototype, "model", void 0);
+            ], EmojiButtonComponent.prototype, "model", void 0);
             __decorate([
                 core_1.Output(),
                 __metadata("design:type", Object)
-            ], EmojiInputComponent.prototype, "modelChange", void 0);
-            EmojiInputComponent = __decorate([
+            ], EmojiButtonComponent.prototype, "modelChange", void 0);
+            EmojiButtonComponent = __decorate([
                 core_1.Component({
-                    selector: 'emoji-input',
-                    templateUrl: './input.html',
-                    styleUrls: ['./input.scss']
+                    selector: 'emoji-button',
+                    templateUrl: './button.html',
+                    styleUrls: ['./button.scss']
                 })
-            ], EmojiInputComponent);
-            exports_1("EmojiInputComponent", EmojiInputComponent);
+            ], EmojiButtonComponent);
+            exports_1("EmojiButtonComponent", EmojiButtonComponent);
         }
     };
 });
-//# sourceMappingURL=input.js.map
+//# sourceMappingURL=button.js.map
