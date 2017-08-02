@@ -1,7 +1,7 @@
 <div class="emoji-opener" (click)="togglePopup()"></div>
 <div class="emoji-search" [ngClass]="popupAnchor" [hidden]="!popupOpen">
   <div class="search-header">
-    <input type="search" [(ngModel)]="filterEmojis" placeholder="Search..." />
+    <input #searchField type="search" [(ngModel)]="filterEmojis" placeholder="Search..." />
   </div>
   <div class="emojis-container">
     <span *ngFor="let emoji of getFilteredEmojis()" (click)="onEmojiClick(emoji.emoji)" title="{{emoji.aliases[0]}}">

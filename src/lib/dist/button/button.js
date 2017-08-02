@@ -39,7 +39,15 @@ System.register(["@angular/core", "../util/util"], function (exports_1, context_
                     }
                 };
                 EmojiButtonComponent.prototype.togglePopup = function () {
+                    var _this = this;
                     this.popupOpen = !this.popupOpen;
+                    if (this.popupOpen) {
+                        // Give ngIf a chance to render the <input>.
+                        // Then set the focus, but do this outside the Angualar zone to be efficient.
+                        setTimeout(function () {
+                            _this.searchField.nativeElement.focus();
+                        }, 0);
+                    }
                 };
                 EmojiButtonComponent.prototype.getFilteredEmojis = function () {
                     var _this = this;
@@ -85,6 +93,10 @@ System.register(["@angular/core", "../util/util"], function (exports_1, context_
                 core_1.Output(),
                 __metadata("design:type", Object)
             ], EmojiButtonComponent.prototype, "modelChange", void 0);
+            __decorate([
+                core_1.ViewChild('searchField'),
+                __metadata("design:type", core_1.ElementRef)
+            ], EmojiButtonComponent.prototype, "searchField", void 0);
             EmojiButtonComponent = __decorate([
                 core_1.Component({
                     selector: 'emoji-button',

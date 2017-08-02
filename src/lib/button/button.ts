@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, OnChanges, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 
 import { EmojiUtil } from '../util/util';
 
@@ -12,6 +12,7 @@ export class EmojiButtonComponent implements OnInit, OnChanges {
   @Input() popupAnchor = 'top';
   @Input() model: any;
   @Output() modelChange: any = new EventEmitter();
+  @ViewChild('searchField') searchField: ElementRef;
 
   input: string;
   filterEmojis: string;
@@ -33,7 +34,16 @@ export class EmojiButtonComponent implements OnInit, OnChanges {
 
   togglePopup() {
     this.popupOpen = !this.popupOpen;
+    
+    if(this.popupOpen) {
+      // Give ngIf a chance to render the <input>.
+      // Then set the focus, but do this outside the Angualar zone to be efficient.
+      setTimeout(() => {
+        this.searchField.nativeElement.focus();
+      }, 0);
+    }
   }
+  
 
   getFilteredEmojis() {
     return this.allEmojis.filter((e) => {
